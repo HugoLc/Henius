@@ -1,0 +1,62 @@
+body{
+  background: black;
+
+}
+
+.tit-henius{
+  text-align: center;
+}
+
+.tit-red {
+  color: red
+}
+
+.tit-cyan {
+  color: cyan;
+}
+
+.tit-lime {
+  color: lime;
+}
+
+.tit-yellow {
+  color: yellow;
+}
+
+
+.box {
+  /* background: pink; */
+  height: 600px;
+  width: 600px;
+  max-width: 95%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-row: 1fr 1fr;
+  grid-gap: 3%;
+
+}
+
+.botao-cor{
+  border-radius: 30px;
+  opacity: 0.8;
+}
+
+.red {
+  background: red;
+}
+
+.cyan {
+ background: cyan;
+}
+
+.lime {
+  background: lime;
+}
+
+.yellow {
+  background: yellow;
+}
