@@ -108,7 +108,7 @@ class Jogo{
       });
     }
 
-    compararArrays(seq, res);
+    return compararArrays(seq, res);
   }
 
   function #finalizarJogo(){
@@ -120,7 +120,10 @@ class Jogo{
     som.Play();
   }
 
-  function #compararArrays(){
+  function #compararArrays(seq, res){
+    let ultSeq = seq[seq.lenght - 1];
+    let ultRes = res[res.lenght - 1];
 
+    ultSeq == ultRes ? true : false;
   }
 }
