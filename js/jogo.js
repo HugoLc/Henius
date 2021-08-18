@@ -1,9 +1,11 @@
 class Jogo{
   const #botoes = [];
+  const #card
   let #sequencia = [];
   let #resposta =[];
-  constructor(botoes){
+  constructor(botoes, card){
     this.#botoes = botoes;
+    this.#card = card;
   }
 
   function rodarJogo(){
@@ -62,18 +64,63 @@ class Jogo{
     }
   }
 
-  function #checarResposta(seq, res){
-    if (!true) {
-      //gameOn = false;
+  function #checarResposta(seq, res, bts){
+    let click = false;
+
+    while(!click){
+      card.addEventListener('click', (evento) =>{
+        let elemento = evento.target;
+        switch (elemento.id) {
+          case bts[0].id:
+            let botao = bt[0];
+            botao.style.opacity = '1';
+            tocarSom('som1');
+            botao.style.opacity = '0.5';
+            res.push(1);
+            break;
+          default:
+          case bts[1].id:
+            let botao = bt[1];
+            botao.style.opacity = '1';
+            tocarSom('som2');
+            botao.style.opacity = '0.5';
+            res.push(2);
+            break;
+          default:
+          case bts[2].id:
+            let botao = bt[2];
+            botao.style.opacity = '1';
+            tocarSom('som3');
+            botao.style.opacity = '0.5';
+            res.push(3);
+            break;
+          default:
+          case bts[3].id:
+            let botao = bt[3];
+            botao.style.opacity = '1';
+            tocarSom('som4');
+            botao.style.opacity = '0.5';
+            res.push(4);
+            break;
+          default:
+
+        }
+      });
     }
+
+    compararArrays(seq, res);
   }
 
   function #finalizarJogo(){
     //registrar classificação
   }
 
-  function #tocarSom(idSom){
-    let sound = document.getElementById(soundObj);
-    sound.Play();
+  function tocarSom(idSom){
+    let som = document.getElementById(idSom);
+    som.Play();
+  }
+
+  function #compararArrays(){
+
   }
 }
