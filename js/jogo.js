@@ -77,6 +77,7 @@ class Jogo{
             tocarSom('som1');
             botao.style.opacity = '0.5';
             res.push(1);
+            click = true;
             break;
           default:
           case bts[1].id:
@@ -85,6 +86,7 @@ class Jogo{
             tocarSom('som2');
             botao.style.opacity = '0.5';
             res.push(2);
+            click = true;
             break;
           default:
           case bts[2].id:
@@ -93,6 +95,7 @@ class Jogo{
             tocarSom('som3');
             botao.style.opacity = '0.5';
             res.push(3);
+            click = true;
             break;
           default:
           case bts[3].id:
@@ -101,9 +104,10 @@ class Jogo{
             tocarSom('som4');
             botao.style.opacity = '0.5';
             res.push(4);
+            click = true;
             break;
           default:
-
+            click = false;
         }
       });
     }
