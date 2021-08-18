@@ -11,7 +11,7 @@ header{
   justify-content: center;
   align-items: center;
   /* background: blue; */
-  opacity: 0.8;
+
 }
 
 main{
@@ -61,14 +61,18 @@ main{
   transform: translate(-50%, 0);
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-row: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
   grid-gap: 3%;
 
 }
 
 .botao-cor{
   border-radius: 30px;
-  opacity: 0.8;
+  opacity: 0.5;
+}
+
+.botao-cor:active{
+  opacity: 1;
 }
 
 .red {
@@ -85,4 +89,8 @@ main{
 
 .yellow {
   background: yellow;
+}
+
+@media screen and (max-width: 500px){
+  
 }
