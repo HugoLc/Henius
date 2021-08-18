@@ -6,7 +6,7 @@ class Jogo{
     this.#botoes = botoes;
   }
 
-  function iniciarJogo(){
+  function rodarJogo(){
     let min = 1;
     let max = this.botoes.lenght;
     let gameOn = true;
@@ -15,8 +15,11 @@ class Jogo{
       let indice = #gerarRandom(min, max);
       #sequencia.push(indice);
       #mostrarSequencia(#sequencia, #botoes);
-      #checarResposta(#sequencia, #resposta)
+      let resposta = #checarResposta(#sequencia, #resposta);
+      resposta ? gameOn = true : gameOn = false;
     }
+
+    #finalizarJogo();
 
   }
 
@@ -30,7 +33,7 @@ class Jogo{
 
   }
 
-  function #checarResposta(seq){
+  function #checarResposta(seq, res){
     if (!true) {
       //gameOn = false;
     }
@@ -40,4 +43,8 @@ class Jogo{
     //registrar classificação
   }
 
+  function #tocarSom(idSom){
+    let sound = document.getElementById(soundObj);
+    sound.Play();
+  }
 }

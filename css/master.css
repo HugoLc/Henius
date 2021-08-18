@@ -75,6 +75,10 @@ main{
   opacity: 1;
 }
 
+.botao-cor:hover{
+  cursor: pointer;
+}
+
 .red {
   background: red;
 }
