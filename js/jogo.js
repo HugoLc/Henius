@@ -17,8 +17,8 @@ class Jogo{
     while (gameOn) {
       let indice = #gerarRandom(min, max);
       #sequencia.push(indice);
-      #mostrarSequencia(#sequencia, #botoes);
-      let resposta = #checarResposta(#sequencia, #resposta);
+      #mostrarSequencia(this.#sequencia, this.#botoes);
+      let resposta = #checarResposta(this.#sequencia, this.#resposta);
       resposta ? gameOn = true : gameOn = false;
     }
 
@@ -126,7 +126,7 @@ class Jogo{
 
   function #finalizarJogo(){
     //registrar classificação
-
+    alert(`fim de jogo! sua pontuação foi ${this.#sequencia.lenght}`);
   }
 
   function tocarSom(idSom){
