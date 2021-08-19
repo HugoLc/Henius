@@ -3,6 +3,7 @@ class Jogo{
   const #card
   let #sequencia = [];
   let #resposta =[];
+
   constructor(botoes, card){
     this.#botoes = botoes;
     this.#card = card;
@@ -66,8 +67,9 @@ class Jogo{
 
   function #checarResposta(seq, res, bts){
     let click = false;
+    // let i = 0;
 
-    while(!click){
+    for (var i = 0; i < seq.length; i++) {
       card.addEventListener('click', (evento) =>{
         let elemento = evento.target;
         switch (elemento.id) {
@@ -77,7 +79,9 @@ class Jogo{
             tocarSom('som1');
             botao.style.opacity = '0.5';
             res.push(1);
-            click = true;
+            if (res[i] != seq[i]) {
+              return false;
+            }
             break;
           default:
           case bts[1].id:
@@ -86,7 +90,9 @@ class Jogo{
             tocarSom('som2');
             botao.style.opacity = '0.5';
             res.push(2);
-            click = true;
+            if (res[i] != seq[i]) {
+              return false;
+            }
             break;
           default:
           case bts[2].id:
@@ -95,7 +101,9 @@ class Jogo{
             tocarSom('som3');
             botao.style.opacity = '0.5';
             res.push(3);
-            click = true;
+            if (res[i] != seq[i]) {
+              return false;
+            }
             break;
           default:
           case bts[3].id:
@@ -104,19 +112,21 @@ class Jogo{
             tocarSom('som4');
             botao.style.opacity = '0.5';
             res.push(4);
-            click = true;
+            if (res[i] != seq[i]) {
+              return false;
+            }
             break;
           default:
             click = false;
         }
       });
     }
-
-    return compararArrays(seq, res);
+    return true;
   }
 
   function #finalizarJogo(){
     //registrar classificação
+
   }
 
   function tocarSom(idSom){
@@ -124,10 +134,4 @@ class Jogo{
     som.Play();
   }
 
-  function #compararArrays(seq, res){
-    let ultSeq = seq[seq.lenght - 1];
-    let ultRes = res[res.lenght - 1];
-
-    ultSeq == ultRes ? true : false;
-  }
 }
