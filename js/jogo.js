@@ -1,4 +1,4 @@
-class Jogo{
+export class Jogo{
   const #botoes = [];
   const #card
   let #sequencia = [];
