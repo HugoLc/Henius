@@ -1,8 +1,9 @@
 export default class Jogo{
-  #botoes;
-  #card;
+  #botoes; // elemento botão
+  #card; // elemento card
   #sequencia;
   #resposta;
+
   constructor(botoes, card){
     this.#botoes = botoes;
     this.#card = card;
