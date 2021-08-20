@@ -1,61 +1,64 @@
-export class Jogo{
-  const #botoes = [];
-  const #card
-  let #sequencia = [];
-  let #resposta =[];
-
+export default class Jogo{
+  #botoes;
+  #card;
+  #sequencia;
+  #resposta;
   constructor(botoes, card){
     this.#botoes = botoes;
     this.#card = card;
   }
 
-  function rodarJogo(){
+  helloWold(){
+    console.log('helloWold');
+  }
+  rodarJogo(){
     let min = 1;
     let max = this.botoes.lenght;
     let gameOn = true;
 
     while (gameOn) {
-      let indice = #gerarRandom(min, max);
-      #sequencia.push(indice);
-      #mostrarSequencia(this.#sequencia, this.#botoes);
-      let resposta = #checarResposta(this.#sequencia, this.#resposta);
+      let indice = this.#gerarRandom(min, max);
+      this.#sequencia.push(indice);
+      this.#mostrarSequencia(this.#sequencia, this.#botoes);
+      let resposta = this.#checarResposta(this.#sequencia, this.#resposta);
       resposta ? gameOn = true : gameOn = false;
     }
 
-    #finalizarJogo();
+    this.#finalizarJogo();
 
   }
 
-  function #gerarRandom(min, max){
+  #gerarRandom(min, max){
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min)) + min;
   }
 
-  function #mostrarSequencia(seq, bt){
+  #mostrarSequencia(seq, bt){
     for (var i = 0; i < seq.length; i++) {
       let numBotao = seq[i];
+      let botao;
       switch (numBotao) {
         case 1:
-          let botao = bt[0];
+          botao = bt[0];
           botao.style.opacity = '1';
           tocarSom('som1');
           botao.style.opacity = '0.5';
           break;
         case 2:
-          let botao = bt[1];
+          botao = bt[1];
           botao.style.opacity = '1';
           tocarSom('som2');
           botao.style.opacity = '0.5';
           break;
         case 3:
-          let botao = bt[2];
+          botao = bt[2];
           botao.style.opacity = '1';
           tocarSom('som3');
           botao.style.opacity = '0.5';
           break;
         case 4:
-          let botao = bt[3];
+          botao = bt[3];
           botao.style.opacity = '1';
           tocarSom('som4');
           botao.style.opacity = '0.5';
@@ -65,16 +68,17 @@ export class Jogo{
     }
   }
 
-  function #checarResposta(seq, res, bts){
+  #checarResposta(seq, res, bts){
     let click = false;
     // let i = 0;
 
     for (var i = 0; i < seq.length; i++) {
       card.addEventListener('click', (evento) =>{
         let elemento = evento.target;
+        let botao;
         switch (elemento.id) {
           case bts[0].id:
-            let botao = bt[0];
+            botao = bt[0];
             botao.style.opacity = '1';
             tocarSom('som1');
             botao.style.opacity = '0.5';
@@ -83,9 +87,8 @@ export class Jogo{
               return false;
             }
             break;
-          default:
           case bts[1].id:
-            let botao = bt[1];
+            botao = bt[1];
             botao.style.opacity = '1';
             tocarSom('som2');
             botao.style.opacity = '0.5';
@@ -94,9 +97,8 @@ export class Jogo{
               return false;
             }
             break;
-          default:
           case bts[2].id:
-            let botao = bt[2];
+            botao = bt[2];
             botao.style.opacity = '1';
             tocarSom('som3');
             botao.style.opacity = '0.5';
@@ -105,9 +107,8 @@ export class Jogo{
               return false;
             }
             break;
-          default:
           case bts[3].id:
-            let botao = bt[3];
+            botao = bt[3];
             botao.style.opacity = '1';
             tocarSom('som4');
             botao.style.opacity = '0.5';
@@ -124,12 +125,12 @@ export class Jogo{
     return true;
   }
 
-  function #finalizarJogo(){
+  #finalizarJogo(){
     //registrar classificação
     alert(`fim de jogo! sua pontuação foi ${this.#sequencia.lenght}`);
   }
 
-  function tocarSom(idSom){
+  tocarSom(idSom){
     let som = document.getElementById(idSom);
     som.Play();
   }

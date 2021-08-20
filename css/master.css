@@ -14,12 +14,6 @@ header{
 
 }
 
-main{
-  /* background: green; */
-  width: 100%;
-  height: 90%;
-  position: relative;
-}
 
 .tit-henius{
   display: inline-block;
@@ -48,6 +42,18 @@ main{
   color: yellow;
 }
 
+main{
+  /* background: green; */
+  width: 100%;
+  height: 90%;
+  position: relative;
+}
+
+.espaco-iniciar{
+  background: pink;
+  text-align: center;
+  padding: 2%;
+}
 
 .box {
   /* background: pink; */
