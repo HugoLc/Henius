@@ -43,25 +43,25 @@ export default class Jogo{
         case 1:
           botao = bt[0];
           botao.style.opacity = '1';
-          tocarSom('som1');
+          this.#tocarSom('#som1');
           botao.style.opacity = '0.5';
           break;
         case 2:
           botao = bt[1];
           botao.style.opacity = '1';
-          tocarSom('som2');
+          this.#tocarSom('#som2');
           botao.style.opacity = '0.5';
           break;
         case 3:
           botao = bt[2];
           botao.style.opacity = '1';
-          tocarSom('som3');
+          this.#tocarSom('#som3');
           botao.style.opacity = '0.5';
           break;
         case 4:
           botao = bt[3];
           botao.style.opacity = '1';
-          tocarSom('som4');
+          this.#tocarSom('#som4');
           botao.style.opacity = '0.5';
           break;
         default:
@@ -81,7 +81,7 @@ export default class Jogo{
           case bts[0].id:
             botao = bt[0];
             botao.style.opacity = '1';
-            tocarSom('som1');
+            this.#tocarSom('#som1');
             botao.style.opacity = '0.5';
             res.push(1);
             if (res[i] != seq[i]) {
@@ -91,7 +91,7 @@ export default class Jogo{
           case bts[1].id:
             botao = bt[1];
             botao.style.opacity = '1';
-            tocarSom('som2');
+            this.#tocarSom('#som2');
             botao.style.opacity = '0.5';
             res.push(2);
             if (res[i] != seq[i]) {
@@ -101,7 +101,7 @@ export default class Jogo{
           case bts[2].id:
             botao = bt[2];
             botao.style.opacity = '1';
-            tocarSom('som3');
+            this.#tocarSom('#som3');
             botao.style.opacity = '0.5';
             res.push(3);
             if (res[i] != seq[i]) {
@@ -111,7 +111,7 @@ export default class Jogo{
           case bts[3].id:
             botao = bt[3];
             botao.style.opacity = '1';
-            tocarSom('som4');
+            this.#tocarSom('#som4');
             botao.style.opacity = '0.5';
             res.push(4);
             if (res[i] != seq[i]) {
@@ -131,9 +131,9 @@ export default class Jogo{
     alert(`fim de jogo! sua pontuação foi ${this.#sequencia.length}`);
   }
 
-  tocarSom(idSom){
-    let som = document.getElementById(idSom);
-    som.Play();
+  #tocarSom(idSom){
+    let som = document.querySelector(idSom);
+    som.play();
   }
 
 }
