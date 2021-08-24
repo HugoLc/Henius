@@ -13,4 +13,5 @@ const jogo = new Jogo(botoes, box);
 
 document.addEventListener('click', () => {
   jogo.rodarJogo();
+  // jogo.helloWold();
 });
