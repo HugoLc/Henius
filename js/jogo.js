@@ -1,8 +1,8 @@
 export default class Jogo{
   #botoes; // elemento botão
   #card; // elemento card
-  #sequencia;
-  #resposta;
+  #sequencia = [];
+  #resposta = [];
 
   constructor(botoes, card){
     this.#botoes = botoes;
@@ -14,12 +14,13 @@ export default class Jogo{
   }
   rodarJogo(){
     let min = 1;
-    let max = this.botoes.lenght;
+    let max = this.#botoes.length;
     let gameOn = true;
 
     while (gameOn) {
       let indice = this.#gerarRandom(min, max);
       this.#sequencia.push(indice);
+      alert(this.#sequencia);
       this.#mostrarSequencia(this.#sequencia, this.#botoes);
       let resposta = this.#checarResposta(this.#sequencia, this.#resposta);
       resposta ? gameOn = true : gameOn = false;
@@ -31,7 +32,7 @@ export default class Jogo{
 
   #gerarRandom(min, max){
     min = Math.ceil(min);
-    max = Math.floor(max);
+    max = Math.floor(max + 1);
     return Math.floor(Math.random() * (max - min)) + min;
   }
 
@@ -128,7 +129,7 @@ export default class Jogo{
 
   #finalizarJogo(){
     //registrar classificação
-    alert(`fim de jogo! sua pontuação foi ${this.#sequencia.lenght}`);
+    alert(`fim de jogo! sua pontuação foi ${this.#sequencia.length}`);
   }
 
   tocarSom(idSom){
