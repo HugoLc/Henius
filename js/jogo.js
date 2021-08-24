@@ -24,14 +24,10 @@ export default class Jogo{
 
     while (gameOn) {
       let indice = await this.#gerarRandom(min, max);
-      alert(indice);
-      // this.#gerarRandom(min, max).then((ind) =>{
-      //   indice = ind;
-      //   alert(indice);
-      // });
-
       this.#sequencia.push(indice);
-      this.#mostrarSequencia(this.#sequencia, this.#botoes);
+      // alert(this.#sequencia);
+      let ok = await this.#mostrarSequencia(this.#sequencia, this.#botoes);
+      // alert(ok);
       let resposta = this.#checarResposta(this.#sequencia, this.#resposta);
       resposta ? gameOn = true : gameOn = false;
     }
@@ -46,47 +42,68 @@ export default class Jogo{
         min = Math.ceil(min);
         max = Math.floor(max + 1);
         resolve(Math.floor(Math.random() * (max - min)) + min);
-      },3000);
+      }, 2000)
+
+    })
+  }
+
+  #timeOut(botao){
+    return new Promise((resolve)=>{
+      setTimeout(()=> {
+        botao.style.opacity = '0.5';
+        console.log('eu');
+        resolve('tempo');
+      }, 2000);
     })
   }
 
   #mostrarSequencia(seq, bt){
-    for (var i = 0; i < seq.length; i++) {
+    return new Promise( async (resolve)=>{
+      // setTimeout(()=>{
+        for (var i = 0; i < seq.length; i++){
+          console.log(i);
+          let numBotao = seq[i];
+          //let numBotao = 1;
+          let botao;
+          let ok;
+          switch (numBotao) {
+            case 1:
+              botao = bt[0];
+              botao.style.opacity = '1';
+              this.#tocarSom('#som1');
+              // setTimeout(()=> {botao.style.opacity = '0.5';}, 2000);
+              ok = await this.#timeOut(botao);
+              console.log(ok);
+              break;
+            case 2:
+              botao = bt[1];
+              botao.style.opacity = '1';
+              this.#tocarSom('#som2');
+              ok = await this.#timeOut(botao);
+              console.log(ok);
+              break;
+            case 3:
+              botao = bt[2];
+              botao.style.opacity = '1';
+              this.#tocarSom('#som3');
+              ok = await this.#timeOut(botao);
+              console.log(ok);
+              break;
+            case 4:
+              botao = bt[3];
+              botao.style.opacity = '1';
+              this.#tocarSom('#som4');
+              ok = await this.#timeOut(botao);
+              console.log(ok);
+              break;
+            default:
+          }
+        }
+        resolve('32');
+      // }, 2000);
 
-      let numBotao = seq[i];
-      // let numBotao = 2;
-      let botao;
-      switch (numBotao) {
-        case 1:
-          botao = bt[0];
-          botao.style.opacity = '1';
-          this.#tocarSom('#som1');
-          timer(3);
-          botao.style.opacity = '0.5';
-          break;
-        case 2:
-          botao = bt[1];
-          botao.style.opacity = '1';
-          this.#tocarSom('#som2');
-          setTimeout(()=> {botao.style.opacity = '0.5';}, 2000);
-          break;
-        case 3:
-          botao = bt[2];
-          botao.style.opacity = '1';
-          this.#tocarSom('#som3');
-          timer(3);
-          botao.style.opacity = '0.5';
-          break;
-        case 4:
-          botao = bt[3];
-          botao.style.opacity = '1';
-          this.#tocarSom('#som4');
-          timer(3);
-          botao.style.opacity = '0.5';
-          break;
-        default:
-      }
-    }
+
+    })
   }
 
   #checarResposta(seq, res, bts){
