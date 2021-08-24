@@ -20,7 +20,6 @@ export default class Jogo{
     while (gameOn) {
       let indice = this.#gerarRandom(min, max);
       this.#sequencia.push(indice);
-      alert(this.#sequencia);
       this.#mostrarSequencia(this.#sequencia, this.#botoes);
       let resposta = this.#checarResposta(this.#sequencia, this.#resposta);
       resposta ? gameOn = true : gameOn = false;
