@@ -106,6 +106,64 @@ export default class Jogo{
     })
   }
 
+  #checarClick(seq, res, bts){
+    return new Promise((resolve)=> {
+      this.#card.addEventListener('click', async (evento) =>{
+        let elemento = evento.target;
+        let botao;
+        switch (elemento.id) {
+          case bts[0].id:
+            botao = bt[0];
+            botao.style.opacity = '1';
+            this.#tocarSom('#som1');
+            await this.#timeOut(botao);
+            res.push(1);
+            // if (res[i] != seq[i]) {
+            //   resolve(false);
+            // }
+            res[i] != seq[i] ? resolve(false) : resolve(true);
+            break;
+          case bts[1].id:
+            botao = bt[1];
+            botao.style.opacity = '1';
+            this.#tocarSom('#som2');
+            await this.#timeOut(botao);
+            res.push(2);
+            // if (res[i] != seq[i]) {
+            //   resolve(false);
+            // }
+            res[i] != seq[i] ? resolve(false) : resolve(true);
+            break;
+          case bts[2].id:
+            botao = bt[2];
+            botao.style.opacity = '1';
+            this.#tocarSom('#som3');
+            await this.#timeOut(botao);
+            res.push(3);
+            // if (res[i] != seq[i]) {
+            //   resolve(false);
+            // }
+            res[i] != seq[i] ? resolve(false) : resolve(true);
+            break;
+          case bts[3].id:
+            botao = bt[3];
+            botao.style.opacity = '1';
+            this.#tocarSom('#som4');
+            await this.#timeOut(botao);
+            res.push(4);
+            // if (res[i] != seq[i]) {
+            //   resolve(false);
+            // }
+            res[i] != seq[i] ? resolve(false) : resolve(true);
+            break;
+          default:
+            click = false;
+            i--;
+        }
+      });
+    });
+  }
+
   #checarResposta(seq, res, bts){
     let click = false;
     let i = 0;
@@ -115,63 +173,7 @@ export default class Jogo{
       //for (var i = 0; i < seq.length; i++) {
       while (!click && i < seq.length) {
         console.log('entrei');
-        rsl = await function(){
-          return new Promise((resolve)=> {
-            this.#card.addEventListener('click', async (evento) =>{
-              let elemento = evento.target;
-              let botao;
-              switch (elemento.id) {
-                case bts[0].id:
-                  botao = bt[0];
-                  botao.style.opacity = '1';
-                  this.#tocarSom('#som1');
-                  await this.#timeOut(botao);
-                  res.push(1);
-                  // if (res[i] != seq[i]) {
-                  //   resolve(false);
-                  // }
-                  res[i] != seq[i] ? resolve(false) : resolve(true);
-                  break;
-                case bts[1].id:
-                  botao = bt[1];
-                  botao.style.opacity = '1';
-                  this.#tocarSom('#som2');
-                  await this.#timeOut(botao);
-                  res.push(2);
-                  // if (res[i] != seq[i]) {
-                  //   resolve(false);
-                  // }
-                  res[i] != seq[i] ? resolve(false) : resolve(true);
-                  break;
-                case bts[2].id:
-                  botao = bt[2];
-                  botao.style.opacity = '1';
-                  this.#tocarSom('#som3');
-                  await this.#timeOut(botao);
-                  res.push(3);
-                  // if (res[i] != seq[i]) {
-                  //   resolve(false);
-                  // }
-                  res[i] != seq[i] ? resolve(false) : resolve(true);
-                  break;
-                case bts[3].id:
-                  botao = bt[3];
-                  botao.style.opacity = '1';
-                  this.#tocarSom('#som4');
-                  await this.#timeOut(botao);
-                  res.push(4);
-                  // if (res[i] != seq[i]) {
-                  //   resolve(false);
-                  // }
-                  res[i] != seq[i] ? resolve(false) : resolve(true);
-                  break;
-                default:
-                  click = false;
-                  i--;
-              }
-            });
-          });
-        }
+        rsl = await
         alert(rsl);
         i++;
         //alert(i);
