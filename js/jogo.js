@@ -25,10 +25,10 @@ export default class Jogo{
     while (gameOn) {
       let indice = await this.#gerarRandom(min, max);
       this.#sequencia.push(indice);
-      // alert(this.#sequencia);
+
       let ok = await this.#mostrarSequencia(this.#sequencia, this.#botoes);
-      // alert(ok);
-      let resposta = this.#checarResposta(this.#sequencia, this.#resposta);
+      let resposta = await this.#checarResposta(this.#sequencia, this.#resposta);
+      // alert(resposta);
       resposta ? gameOn = true : gameOn = false;
     }
 
@@ -38,11 +38,11 @@ export default class Jogo{
 
   #gerarRandom(min, max){
     return new Promise((resolve) => {
-      setTimeout(()=>{
+      //setTimeout(()=>{
         min = Math.ceil(min);
         max = Math.floor(max + 1);
         resolve(Math.floor(Math.random() * (max - min)) + min);
-      }, 2000)
+      //}, 2000)
 
     })
   }
@@ -108,60 +108,77 @@ export default class Jogo{
 
   #checarResposta(seq, res, bts){
     let click = false;
-    // let i = 0;
-
-    for (var i = 0; i < seq.length; i++) {
-      // alert('entrei');
-      card.addEventListener('click', (evento) =>{
-        let elemento = evento.target;
-        let botao;
-        switch (elemento.id) {
-          case bts[0].id:
-            botao = bt[0];
-            botao.style.opacity = '1';
-            this.#tocarSom('#som1');
-            botao.style.opacity = '0.5';
-            res.push(1);
-            if (res[i] != seq[i]) {
-              return false;
-            }
-            break;
-          case bts[1].id:
-            botao = bt[1];
-            botao.style.opacity = '1';
-            this.#tocarSom('#som2');
-            botao.style.opacity = '0.5';
-            res.push(2);
-            if (res[i] != seq[i]) {
-              return false;
-            }
-            break;
-          case bts[2].id:
-            botao = bt[2];
-            botao.style.opacity = '1';
-            this.#tocarSom('#som3');
-            botao.style.opacity = '0.5';
-            res.push(3);
-            if (res[i] != seq[i]) {
-              return false;
-            }
-            break;
-          case bts[3].id:
-            botao = bt[3];
-            botao.style.opacity = '1';
-            this.#tocarSom('#som4');
-            botao.style.opacity = '0.5';
-            res.push(4);
-            if (res[i] != seq[i]) {
-              return false;
-            }
-            break;
-          default:
-            click = false;
+    let i = 0;
+    let rsl = true;
+    //alert(seq.length);
+    return new Promise ( async (resolve) => {
+      //for (var i = 0; i < seq.length; i++) {
+      while (!click && i < seq.length) {
+        console.log('entrei');
+        rsl = await function(){
+          return new Promise((resolve)=> {
+            this.#card.addEventListener('click', async (evento) =>{
+              let elemento = evento.target;
+              let botao;
+              switch (elemento.id) {
+                case bts[0].id:
+                  botao = bt[0];
+                  botao.style.opacity = '1';
+                  this.#tocarSom('#som1');
+                  await this.#timeOut(botao);
+                  res.push(1);
+                  // if (res[i] != seq[i]) {
+                  //   resolve(false);
+                  // }
+                  res[i] != seq[i] ? resolve(false) : resolve(true);
+                  break;
+                case bts[1].id:
+                  botao = bt[1];
+                  botao.style.opacity = '1';
+                  this.#tocarSom('#som2');
+                  await this.#timeOut(botao);
+                  res.push(2);
+                  // if (res[i] != seq[i]) {
+                  //   resolve(false);
+                  // }
+                  res[i] != seq[i] ? resolve(false) : resolve(true);
+                  break;
+                case bts[2].id:
+                  botao = bt[2];
+                  botao.style.opacity = '1';
+                  this.#tocarSom('#som3');
+                  await this.#timeOut(botao);
+                  res.push(3);
+                  // if (res[i] != seq[i]) {
+                  //   resolve(false);
+                  // }
+                  res[i] != seq[i] ? resolve(false) : resolve(true);
+                  break;
+                case bts[3].id:
+                  botao = bt[3];
+                  botao.style.opacity = '1';
+                  this.#tocarSom('#som4');
+                  await this.#timeOut(botao);
+                  res.push(4);
+                  // if (res[i] != seq[i]) {
+                  //   resolve(false);
+                  // }
+                  res[i] != seq[i] ? resolve(false) : resolve(true);
+                  break;
+                default:
+                  click = false;
+                  i--;
+              }
+            });
+          });
         }
-      });
-    }
-    return true;
+        alert(rsl);
+        i++;
+        //alert(i);
+      }
+      rsl ? resolve(true) : resolve(false);
+    });
+
   }
 
   #finalizarJogo(){
