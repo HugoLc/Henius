@@ -27,7 +27,7 @@ export default class Jogo{
       this.#sequencia.push(indice);
 
       let ok = await this.#mostrarSequencia(this.#sequencia, this.#botoes);
-      let resposta = await this.#checarResposta(this.#sequencia, this.#resposta);
+      let resposta = await this.#checarResposta(this.#sequencia, this.#resposta, this.#botoes);
       // alert(resposta);
       resposta ? gameOn = true : gameOn = false;
     }
@@ -106,14 +106,14 @@ export default class Jogo{
     })
   }
 
-  #checarClick(seq, res, bts){
+  #checarClick(seq, res, bts, i, click){
     return new Promise((resolve)=> {
       this.#card.addEventListener('click', async (evento) =>{
         let elemento = evento.target;
         let botao;
         switch (elemento.id) {
           case bts[0].id:
-            botao = bt[0];
+            botao = bts[0];
             botao.style.opacity = '1';
             this.#tocarSom('#som1');
             await this.#timeOut(botao);
@@ -124,7 +124,7 @@ export default class Jogo{
             res[i] != seq[i] ? resolve(false) : resolve(true);
             break;
           case bts[1].id:
-            botao = bt[1];
+            botao = bts[1];
             botao.style.opacity = '1';
             this.#tocarSom('#som2');
             await this.#timeOut(botao);
@@ -135,7 +135,7 @@ export default class Jogo{
             res[i] != seq[i] ? resolve(false) : resolve(true);
             break;
           case bts[2].id:
-            botao = bt[2];
+            botao = bts[2];
             botao.style.opacity = '1';
             this.#tocarSom('#som3');
             await this.#timeOut(botao);
@@ -146,7 +146,7 @@ export default class Jogo{
             res[i] != seq[i] ? resolve(false) : resolve(true);
             break;
           case bts[3].id:
-            botao = bt[3];
+            botao = bts[3];
             botao.style.opacity = '1';
             this.#tocarSom('#som4');
             await this.#timeOut(botao);
@@ -168,12 +168,13 @@ export default class Jogo{
     let click = false;
     let i = 0;
     let rsl = true;
+    alert(bts);
     //alert(seq.length);
     return new Promise ( async (resolve) => {
       //for (var i = 0; i < seq.length; i++) {
       while (!click && i < seq.length) {
         console.log('entrei');
-        rsl = await
+        rsl = await this.#checarClick(seq, res, bts, i, click);
         alert(rsl);
         i++;
         //alert(i);
