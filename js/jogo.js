@@ -1,4 +1,5 @@
-import timer from '/js/misc.js';
+//import timer from '/js/misc.js'; // funciona no srv local
+import timer from '/genius/js/misc.js'; // funciona no gh pages
 
 export default class Jogo{
   #botoes; // elemento botão
