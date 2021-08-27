@@ -1,5 +1,5 @@
-//import timer from '/js/misc.js'; // funciona no srv local
-import timer from '/genius/js/misc.js'; // funciona no gh pages
+import timer from '/js/misc.js'; // funciona no srv local
+//import timer from '/genius/js/misc.js'; // funciona no gh pages
 
 export default class Jogo{
   #botoes; // elemento botão
@@ -183,6 +183,7 @@ export default class Jogo{
       //for (var i = 0; i < seq.length; i++) {
       while (!click && i < seq.length) {
         rsl = await this.#checarClick(seq, res, bts, i, click);
+        if (!rsl) break;
         console.log(`rodou ${i} vez`)
         i++;
       }
