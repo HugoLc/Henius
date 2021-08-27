@@ -6,12 +6,19 @@ const box = document.querySelector('#id-box')
 const collection = document.getElementsByClassName('botao-cor');
 const botoes = Array.from(collection);
 
+let rodando = false;
 
 // alert();
 // INSTANCIAR JOGO E ADICIONAR UM EVENT LISTENER CLICK PARA INICIAR O JOGO
 const jogo = new Jogo(botoes, box);
 
 document.addEventListener('click', () => {
-  jogo.rodarJogo();
+  if (!rodando) {
+    console.log('jogo iniciado');
+    // rodando = true;
+    rodando = jogo.rodarJogo();
+    // alert(rodando);
+  }
+
   // jogo.helloWold();
 });
