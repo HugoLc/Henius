@@ -52,7 +52,7 @@ export default class Jogo{
     })
   }
 
-  #timeOut(botao){
+  #voltarOpacity(botao){
     return new Promise((resolve)=>{
       setTimeout(()=> {
         botao.style.opacity = '0.5';
@@ -61,45 +61,52 @@ export default class Jogo{
     })
   }
 
+  #sleeper(ms){
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve();
+      }, ms);
+    });
+  }
+
   #mostrarSequencia(seq, bt){
     return new Promise( async (resolve)=>{
-      // setTimeout(()=>{
-        for (var i = 0; i < seq.length; i++){
-          let numBotao = seq[i];
-          //let numBotao = 1;
-          let botao;
-          let ok;
-          switch (numBotao) {
-            case 1:
-              botao = bt[0];
-              botao.style.opacity = '1';
-              this.#tocarSom('#som1');
-              // setTimeout(()=> {botao.style.opacity = '0.5';}, 2000);
-              ok = await this.#timeOut(botao);
-              break;
-            case 2:
-              botao = bt[1];
-              botao.style.opacity = '1';
-              this.#tocarSom('#som2');
-              ok = await this.#timeOut(botao);
-              break;
-            case 3:
-              botao = bt[2];
-              botao.style.opacity = '1';
-              this.#tocarSom('#som3');
-              ok = await this.#timeOut(botao);
-              break;
-            case 4:
-              botao = bt[3];
-              botao.style.opacity = '1';
-              this.#tocarSom('#som4');
-              ok = await this.#timeOut(botao);
-              break;
-            default:
-          }
+      await this.#sleeper(1000);
+      for (var i = 0; i < seq.length; i++){
+        let numBotao = seq[i];
+        //let numBotao = 1;
+        let botao;
+        let ok;
+        switch (numBotao) {
+          case 1:
+            botao = bt[0];
+            botao.style.opacity = '1';
+            this.#tocarSom('#som1');
+            ok = await this.#voltarOpacity(botao);
+            break;
+          case 2:
+            botao = bt[1];
+            botao.style.opacity = '1';
+            this.#tocarSom('#som2');
+            ok = await this.#voltarOpacity(botao);
+            break;
+          case 3:
+            botao = bt[2];
+            botao.style.opacity = '1';
+            this.#tocarSom('#som3');
+            ok = await this.#voltarOpacity(botao);
+            break;
+          case 4:
+            botao = bt[3];
+            botao.style.opacity = '1';
+            this.#tocarSom('#som4');
+            ok = await this.#voltarOpacity(botao);
+            break;
+          default:
         }
-        resolve();
-      // }, 2000);
+      }
+      resolve();
+
 
 
     })
@@ -123,7 +130,7 @@ export default class Jogo{
               botao = bts[0];
               botao.style.opacity = '1';
               this.#tocarSom('#som1');
-              await this.#timeOut(botao);
+              await this.#voltarOpacity(botao);
               res.push(1);
               console.log(`resposta = ${res}`);
               console.log(`sequencia = ${seq}`);
@@ -134,7 +141,7 @@ export default class Jogo{
               botao = bts[1];
               botao.style.opacity = '1';
               this.#tocarSom('#som2');
-              await this.#timeOut(botao);
+              await this.#voltarOpacity(botao);
               res.push(2);
               console.log(`resposta = ${res}`);
               console.log(`sequencia = ${seq}`);
@@ -145,7 +152,7 @@ export default class Jogo{
               botao = bts[2];
               botao.style.opacity = '1';
               this.#tocarSom('#som3');
-              await this.#timeOut(botao);
+              await this.#voltarOpacity(botao);
               res.push(3);
               console.log(`resposta = ${res}`);
               console.log(`sequencia = ${seq}`);
@@ -156,7 +163,7 @@ export default class Jogo{
               botao = bts[3];
               botao.style.opacity = '1';
               this.#tocarSom('#som4');
-              await this.#timeOut(botao);
+              await this.#voltarOpacity(botao);
               res.push(4);
               console.log(`resposta = ${res}`);
               console.log(`sequencia = ${seq}`);
