@@ -1,5 +1,5 @@
-import Jogo from '/js/jogo.js';
-
+import Jogo from '/genius/js/jogo.js'; // funciona no gh pages
+//import Jogo from '/js/jogo.js'; // funciona no srv local
 
 const box = document.querySelector('#id-box')
 // const botao = document.querySelector('.botao-cor'); seleciona o primeiro elemento que aparecer
