@@ -52,12 +52,12 @@ export default class Jogo{
     })
   }
 
-  #voltarOpacity(botao){
+  #voltarOpacity(botao, ms){
     return new Promise((resolve)=>{
       setTimeout(()=> {
         botao.style.opacity = '0.5';
         resolve('tempo');
-      }, 2000);
+      }, ms);
     })
   }
 
@@ -82,33 +82,30 @@ export default class Jogo{
             botao = bt[0];
             botao.style.opacity = '1';
             this.#tocarSom('#som1');
-            ok = await this.#voltarOpacity(botao);
+            ok = await this.#voltarOpacity(botao, 2000);
             break;
           case 2:
             botao = bt[1];
             botao.style.opacity = '1';
             this.#tocarSom('#som2');
-            ok = await this.#voltarOpacity(botao);
+            ok = await this.#voltarOpacity(botao, 2000);
             break;
           case 3:
             botao = bt[2];
             botao.style.opacity = '1';
             this.#tocarSom('#som3');
-            ok = await this.#voltarOpacity(botao);
+            ok = await this.#voltarOpacity(botao, 2000);
             break;
           case 4:
             botao = bt[3];
             botao.style.opacity = '1';
             this.#tocarSom('#som4');
-            ok = await this.#voltarOpacity(botao);
+            ok = await this.#voltarOpacity(botao, 2000);
             break;
           default:
         }
       }
       resolve();
-
-
-
     })
   }
 
@@ -130,7 +127,7 @@ export default class Jogo{
               botao = bts[0];
               botao.style.opacity = '1';
               this.#tocarSom('#som1');
-              await this.#voltarOpacity(botao);
+              await this.#voltarOpacity(botao, 1000);
               res.push(1);
               console.log(`resposta = ${res}`);
               console.log(`sequencia = ${seq}`);
@@ -141,7 +138,7 @@ export default class Jogo{
               botao = bts[1];
               botao.style.opacity = '1';
               this.#tocarSom('#som2');
-              await this.#voltarOpacity(botao);
+              await this.#voltarOpacity(botao, 1000);
               res.push(2);
               console.log(`resposta = ${res}`);
               console.log(`sequencia = ${seq}`);
@@ -152,7 +149,7 @@ export default class Jogo{
               botao = bts[2];
               botao.style.opacity = '1';
               this.#tocarSom('#som3');
-              await this.#voltarOpacity(botao);
+              await this.#voltarOpacity(botao, 1000);
               res.push(3);
               console.log(`resposta = ${res}`);
               console.log(`sequencia = ${seq}`);
@@ -163,7 +160,7 @@ export default class Jogo{
               botao = bts[3];
               botao.style.opacity = '1';
               this.#tocarSom('#som4');
-              await this.#voltarOpacity(botao);
+              await this.#voltarOpacity(botao, 1000);
               res.push(4);
               console.log(`resposta = ${res}`);
               console.log(`sequencia = ${seq}`);
