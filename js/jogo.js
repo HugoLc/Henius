@@ -80,24 +80,28 @@ export default class Jogo{
         switch (numBotao) {
           case 1:
             botao = bt[0];
+            await this.#sleeper(200);
             botao.style.opacity = '1';
             this.#tocarSom('#som1');
             ok = await this.#voltarOpacity(botao, 2000);
             break;
           case 2:
             botao = bt[1];
+            await this.#sleeper(200);
             botao.style.opacity = '1';
             this.#tocarSom('#som2');
             ok = await this.#voltarOpacity(botao, 2000);
             break;
           case 3:
             botao = bt[2];
+            await this.#sleeper(200);
             botao.style.opacity = '1';
             this.#tocarSom('#som3');
             ok = await this.#voltarOpacity(botao, 2000);
             break;
           case 4:
             botao = bt[3];
+            await this.#sleeper(200);
             botao.style.opacity = '1';
             this.#tocarSom('#som4');
             ok = await this.#voltarOpacity(botao, 2000);
