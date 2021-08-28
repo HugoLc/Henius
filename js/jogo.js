@@ -113,10 +113,10 @@ export default class Jogo{
     })
   }
 
-  #checarClick(seq, res, bts, i, click){
+  #checarClick(seq, res, bts, i){
     let resol;
 
-    let block = false;
+    let block = false; // variavel para bloquear varias entradas de click
     return new Promise((resolve)=> {
       console.log('deu ruim');
       this.#card.addEventListener('click', async (evento) =>{
@@ -171,8 +171,7 @@ export default class Jogo{
               res[i] != seq[i] ? resolve(false) : resolve(true);
               break;
             default:
-              click = false;
-              i--;
+              resolve(i);
           }
 
         }
@@ -181,19 +180,27 @@ export default class Jogo{
     });
   }
 
-  #checarResposta(seq, /*res*/ bts){
+  #checarResposta(seq, bts){
     console.log('checagem iniciada');
-    let click = false;
+    //let click = false;
     let i = 0;
     let rsl = true;
     let res = [];
     return new Promise ( async (resolve) => {
       //for (var i = 0; i < seq.length; i++) {
-      while (!click && i < seq.length) {
-        rsl = await this.#checarClick(seq, res, bts, i, click);
-        if (!rsl) break;
+      while (i < seq.length) {
+        rsl = await this.#checarClick(seq, res, bts, i);
+        alert(rsl);
+        if (typeof rsl == 'number') {
+          i=i;
+        }
+        else if (!rsl) {
+          break;
+        }
+        else {
+          i++;
+        }
         console.log(`rodou ${i} vez`)
-        i++;
       }
       rsl ? resolve(true) : resolve(false);
     });
