@@ -190,7 +190,6 @@ export default class Jogo{
       //for (var i = 0; i < seq.length; i++) {
       while (i < seq.length) {
         rsl = await this.#checarClick(seq, res, bts, i);
-        alert(rsl);
         if (typeof rsl == 'number') {
           i=i;
         }
@@ -207,14 +206,21 @@ export default class Jogo{
 
   }
 
-  #finalizarJogo(){
-    //registrar classificação
-    alert(`fim de jogo! sua pontuação foi ${this.#sequencia.length}`);
-  }
-
   #tocarSom(idSom){
     let som = document.querySelector(idSom);
     som.play();
   }
 
+  #getClassificacao(){
+    
+  }
+
+  #postClassificacao(){
+    let file = new XMLHttpRequest();
+  }
+
+  #finalizarJogo(){
+    //registrar classificação
+    alert(`fim de jogo! sua pontuação foi ${this.#sequencia.length}`);
+  }
 }
