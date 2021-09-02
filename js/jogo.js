@@ -116,56 +116,42 @@ export default class Jogo{
 
     let block = false; // variavel para bloquear varias entradas de click
     return new Promise((resolve)=> {
-      console.log('deu ruim');
       this.#card.addEventListener('click', async (evento) =>{
         if (!block) {
           block = true;
           let elemento = evento.target;
           let botao;
-          console.log(elemento.id);
           switch (elemento.id) {
             case bts[0].id:
-              console.log('case 1');
               botao = bts[0];
               botao.style.opacity = '1';
               this.#tocarSom('#som1');
               await this.#voltarOpacity(botao, 1000);
               res.push(1);
-              console.log(`resposta = ${res}`);
-              console.log(`sequencia = ${seq}`);
               res[i] != seq[i] ? resolve(false) : resolve(true);
               break;
             case bts[1].id:
-              console.log('case 2');
               botao = bts[1];
               botao.style.opacity = '1';
               this.#tocarSom('#som2');
               await this.#voltarOpacity(botao, 1000);
               res.push(2);
-              console.log(`resposta = ${res}`);
-              console.log(`sequencia = ${seq}`);
               res[i] != seq[i] ? resolve(false) : resolve(true);
               break;
             case bts[2].id:
-              console.log('case 3');
               botao = bts[2];
               botao.style.opacity = '1';
               this.#tocarSom('#som3');
               await this.#voltarOpacity(botao, 1000);
               res.push(3);
-              console.log(`resposta = ${res}`);
-              console.log(`sequencia = ${seq}`);
               res[i] != seq[i] ? resolve(false) : resolve(true);
               break;
             case bts[3].id:
-              console.log('case 4');
               botao = bts[3];
               botao.style.opacity = '1';
               this.#tocarSom('#som4');
               await this.#voltarOpacity(botao, 1000);
               res.push(4);
-              console.log(`resposta = ${res}`);
-              console.log(`sequencia = ${seq}`);
               res[i] != seq[i] ? resolve(false) : resolve(true);
               break;
             default:
