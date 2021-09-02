@@ -198,6 +198,6 @@ export default class Jogo{
   // FUNÇÃO CONTROLAR A FINALIZAÇÃO DO JOGO
   #finalizarJogo(){
     //registrar classificação
-    alert(`fim de jogo! sua pontuação foi ${this.#sequencia.length}`);
+    alert(`Fim de jogo! \nSua pontuação foi ${this.#sequencia.length} pontos.`);
   }
 }
