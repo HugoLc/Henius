@@ -6,7 +6,10 @@ const box = document.querySelector('#id-box')
 const collection = document.getElementsByClassName('botao-cor');
 const botoes = Array.from(collection);
 
-testeXHR();
+testeGetXHR();
+testePostXHR();
+
+
 
 let rodando = false;
 
@@ -28,7 +31,7 @@ document.addEventListener('click', () => {
   // jogo.helloWold();
 });
 
-function testeXHR(){
+function testeGetXHR(){
   const xhr = new XMLHttpRequest();
   let infoJson;
 
@@ -45,4 +48,25 @@ function testeXHR(){
   xhr.open('GET', '../rank.json');
 
   xhr.send();
+}
+
+function testePostXHR(){
+  const xhr = new XMLHttpRequest();
+  let newInfo = {
+    "nome": "ingrid",
+    "pontos": 2000
+  };
+
+  xhr.responseType = 'json';
+  // xhr.onreadystatechange = () => {
+  //
+  //   if(xhr.readyState == 4){
+  //     infoJson = xhr.response;
+  //     //infoJson = JSON.parse(infoJson);
+  //     console.log(infoJson);
+  //   }
+  // };
+  xhr.open("POST", '../rank.json');
+  xhr.send(newInfo);
+
 }
