@@ -38,11 +38,9 @@ export default class Jogo{
   //FUNÇÃO PARA GERAR VALOR INTEIRO ALEATORIO ENTRE
   #gerarRandom(min, max){
     return new Promise((resolve) => {
-      //setTimeout(()=>{
         min = Math.ceil(min);
         max = Math.floor(max + 1);
         resolve(Math.floor(Math.random() * (max - min)) + min);
-      //}, 2000)
 
     })
   }
@@ -75,37 +73,35 @@ export default class Jogo{
       await this.#sleeper(1000);
       for (var i = 0; i < seq.length; i++){
         let numBotao = seq[i];
-        //let numBotao = 1;
         let botao;
-        let ok;
         switch (numBotao) {
           case 1:
             botao = bt[0];
             await this.#sleeper(200);
             botao.style.opacity = '1';
             this.#tocarSom('#som1');
-            ok = await this.#voltarOpacity(botao, 2000);
+            await this.#voltarOpacity(botao, 1500);
             break;
           case 2:
             botao = bt[1];
             await this.#sleeper(200);
             botao.style.opacity = '1';
             this.#tocarSom('#som2');
-            ok = await this.#voltarOpacity(botao, 2000);
+            await this.#voltarOpacity(botao, 1500);
             break;
           case 3:
             botao = bt[2];
             await this.#sleeper(200);
             botao.style.opacity = '1';
             this.#tocarSom('#som3');
-            ok = await this.#voltarOpacity(botao, 2000);
+            await this.#voltarOpacity(botao, 1500);
             break;
           case 4:
             botao = bt[3];
             await this.#sleeper(200);
             botao.style.opacity = '1';
             this.#tocarSom('#som4');
-            ok = await this.#voltarOpacity(botao, 2000);
+            await this.#voltarOpacity(botao, 1500);
             break;
           default:
         }
@@ -182,7 +178,7 @@ export default class Jogo{
     });
   }
 
-
+  //FUNÇÃO PARA CHECAR A RESPOSTA DO USUÁRIO
   #checarResposta(seq, bts){
     console.log('checagem iniciada');
     let i = 0;
@@ -207,19 +203,23 @@ export default class Jogo{
 
   }
 
+  //FUNÇÃO PARA TOCAR SOM DO BOTÃO
   #tocarSom(idSom){
     let som = document.querySelector(idSom);
     som.play();
   }
 
+  //FUNÇÃO PARA PEGAR A CLASSIFICAÇÃO (EM BREVE)
   #getClassificacao(){
 
   }
 
+  //FUNÇÃO PARA POSTAR A CLASSIFICAÇÃO (EM BREVE)
   #postClassificacao(){
-    let file = new XMLHttpRequest();
+    // let file = new XMLHttpRequest();
   }
 
+  // FUNÇÃO CONTROLAR A FINALIZAÇÃO DO JOGO
   #finalizarJogo(){
     //registrar classificação
     alert(`fim de jogo! sua pontuação foi ${this.#sequencia.length}`);
