@@ -1,9 +1,10 @@
 
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
-
-export default async function timer(segundos) {
-  let ms = segundos * 1000;
-  await sleep(ms);
+//FUNÇÃO PARA PAUSAR A EXECUÇÃO DO CÓDIGO
+//EM UM TEMPO DETERMINADO
+export default function sleeper(ms){
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve();
+    }, ms);
+  });
 }

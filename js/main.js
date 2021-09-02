@@ -1,5 +1,5 @@
-//import Jogo from '/genius/js/jogo.js'; // funciona no gh pages
-import Jogo from '/js/jogo.js'; // funciona no srv local
+import Jogo from '/genius/js/jogo.js'; // funciona no gh pages
+//import Jogo from '/js/jogo.js'; // funciona no srv local
 
 const box = document.querySelector('#id-box')
 const collection = document.getElementsByClassName('botao-cor'); //gera uma coleção de elementos

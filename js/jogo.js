@@ -1,5 +1,5 @@
-import timer from '/js/misc.js'; // funciona no srv local
-//import timer from '/genius/js/misc.js'; // funciona no gh pages
+//import sleeper from '/js/misc.js'; // funciona no srv local
+import sleeper from '/genius/js/misc.js'; // funciona no gh pages
 
 export default class Jogo{
   #botoes; // array de elementos botão
@@ -56,49 +56,39 @@ export default class Jogo{
     })
   }
 
-  //FUNÇÃO PARA PAUSAR A EXECUÇÃO DO CÓDIGO
-  //EM UM TEMPO DETERMINADO
-  #sleeper(ms){
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve();
-      }, ms);
-    });
-  }
-
   //FUNÇÃO PARA MOSTRAR A SEQUENCIA DO JOGO
   //E EFEITOS NOS BOTÕES
   #mostrarSequencia(seq, bt){
     return new Promise( async (resolve)=>{
-      await this.#sleeper(1000);
+      await sleeper(1000);
       for (var i = 0; i < seq.length; i++){
         let numBotao = seq[i];
         let botao;
         switch (numBotao) {
           case 1:
             botao = bt[0];
-            await this.#sleeper(200);
+            await sleeper(200);
             botao.style.opacity = '1';
             this.#tocarSom('#som1');
             await this.#voltarOpacity(botao, 1500);
             break;
           case 2:
             botao = bt[1];
-            await this.#sleeper(200);
+            await sleeper(200);
             botao.style.opacity = '1';
             this.#tocarSom('#som2');
             await this.#voltarOpacity(botao, 1500);
             break;
           case 3:
             botao = bt[2];
-            await this.#sleeper(200);
+            await sleeper(200);
             botao.style.opacity = '1';
             this.#tocarSom('#som3');
             await this.#voltarOpacity(botao, 1500);
             break;
           case 4:
             botao = bt[3];
-            await this.#sleeper(200);
+            await sleeper(200);
             botao.style.opacity = '1';
             this.#tocarSom('#som4');
             await this.#voltarOpacity(botao, 1500);
