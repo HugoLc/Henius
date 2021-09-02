@@ -1,6 +1,4 @@
-[
-  {
-    "nome": hugo,
-    "pontos": 1000,
-  }
-]
+{
+  "nome": "hugo",
+  "pontos": 1000
+}

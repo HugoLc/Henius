@@ -6,7 +6,12 @@ const box = document.querySelector('#id-box')
 const collection = document.getElementsByClassName('botao-cor');
 const botoes = Array.from(collection);
 
+testeXHR();
+
 let rodando = false;
+
+// console.log(rank);
+
 
 // alert();
 // INSTANCIAR JOGO E ADICIONAR UM EVENT LISTENER CLICK PARA INICIAR O JOGO
@@ -22,3 +27,22 @@ document.addEventListener('click', () => {
 
   // jogo.helloWold();
 });
+
+function testeXHR(){
+  const xhr = new XMLHttpRequest();
+  let infoJson;
+
+  xhr.responseType = 'json';
+  xhr.onreadystatechange = () => {
+
+    if(xhr.readyState == 4){
+      infoJson = xhr.response;
+      //infoJson = JSON.parse(infoJson);
+      console.log(infoJson);
+    }
+  };
+
+  xhr.open('GET', '../rank.json');
+
+  xhr.send();
+}
