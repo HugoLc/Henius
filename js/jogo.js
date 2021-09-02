@@ -2,38 +2,27 @@ import timer from '/js/misc.js'; // funciona no srv local
 //import timer from '/genius/js/misc.js'; // funciona no gh pages
 
 export default class Jogo{
-  #botoes; // elemento botão
+  #botoes; // array de elementos botão
   #card; // elemento card
-  #sequencia = [];
-  #resposta = [];
+  #sequencia = []; //array para guardar a sequencia
 
   constructor(botoes, card){
     this.#botoes = botoes;
     this.#card = card;
   }
 
-  helloWold(){
-    for (var i = 0; i < 10; i++) {
-      console.log(i);
-      timer(1);
-    }
-  }
-
   async rodarJogo(){
-    let min = 1;
-    let max = this.#botoes.length;
-    let gameOn = true;
+    const min = 1; // variável para definir o valor minimo aleatorio (gerarRandom)
+    const max = this.#botoes.length; // variável para definir o valor maximo aleatorio (gerarRandom)
+    let gameOn = true; //condição para o while rodar
 
     while (gameOn) {
       let indice = await this.#gerarRandom(min, max);
       this.#sequencia.push(indice);
-      console.log('----');
-      console.log(this.#sequencia);
 
       let seq = await this.#mostrarSequencia(this.#sequencia, this.#botoes);
-      let resposta = await this.#checarResposta(this.#sequencia, /*this.#resposta*/ this.#botoes);
-      // alert(resposta);
-      console.log(this.#sequencia);
+      let resposta = await this.#checarResposta(this.#sequencia, this.#botoes);
+
       resposta ? gameOn = true : gameOn = false;
     }
 
@@ -212,7 +201,7 @@ export default class Jogo{
   }
 
   #getClassificacao(){
-    
+
   }
 
   #postClassificacao(){
