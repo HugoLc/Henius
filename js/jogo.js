@@ -17,19 +17,25 @@ export default class Jogo{
     let gameOn = true; //condição para o while rodar
 
     while (gameOn) {
+      //gerar um indice para adicionar à sequencia
       let indice = await this.#gerarRandom(min, max);
       this.#sequencia.push(indice);
 
+      //mostrar a sequencia
       let seq = await this.#mostrarSequencia(this.#sequencia, this.#botoes);
+      //checar a resposta
       let resposta = await this.#checarResposta(this.#sequencia, this.#botoes);
 
+      //se houver erro gameOn recebe falso e encerra o loop
       resposta ? gameOn = true : gameOn = false;
     }
 
+    //finaliza o jogo e retorna o valor false para 'rodando'
     this.#finalizarJogo();
     return false;
   }
 
+  //FUNÇÃO PARA GERAR VALOR INTEIRO ALEATORIO ENTRE
   #gerarRandom(min, max){
     return new Promise((resolve) => {
       //setTimeout(()=>{
@@ -41,15 +47,19 @@ export default class Jogo{
     })
   }
 
+  //FUNÇÃO PARA VOLTAR A OPACIDADE DO ELEMENTO
+  //APÓS DETERMINADO TEMPO
   #voltarOpacity(botao, ms){
     return new Promise((resolve)=>{
       setTimeout(()=> {
         botao.style.opacity = '0.5';
-        resolve('tempo');
+        resolve();
       }, ms);
     })
   }
 
+  //FUNÇÃO PARA PAUSAR A EXECUÇÃO DO CÓDIGO
+  //EM UM TEMPO DETERMINADO
   #sleeper(ms){
     return new Promise((resolve) => {
       setTimeout(() => {
@@ -58,6 +68,8 @@ export default class Jogo{
     });
   }
 
+  //FUNÇÃO PARA MOSTRAR A SEQUENCIA DO JOGO
+  //E EFEITOS NOS BOTÕES
   #mostrarSequencia(seq, bt){
     return new Promise( async (resolve)=>{
       await this.#sleeper(1000);
@@ -102,6 +114,7 @@ export default class Jogo{
     })
   }
 
+  //FUNÇÃO PARA CHECAR SE HOUVE CLIQUE NA RESPOSTA DO USUÁRIO
   #checarClick(seq, res, bts, i){
     let resol;
 
@@ -169,14 +182,13 @@ export default class Jogo{
     });
   }
 
+
   #checarResposta(seq, bts){
     console.log('checagem iniciada');
-    //let click = false;
     let i = 0;
     let rsl = true;
     let res = [];
     return new Promise ( async (resolve) => {
-      //for (var i = 0; i < seq.length; i++) {
       while (i < seq.length) {
         rsl = await this.#checarClick(seq, res, bts, i);
         if (typeof rsl == 'number') {
