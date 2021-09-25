@@ -28,7 +28,9 @@ let rodando = false; // variavel para bloquear um segundo acionamento do jogo
 const jogo = new Jogo(botoes, box);
 
 document.addEventListener('click', () => {
-  infoCard.excluirInfoCard();
+  if(infoCard) {infoCard.excluirInfoCard();}
+  infoCard = null; 
+  
   if (!rodando) {
     console.log('jogo iniciado');
     alert('Jogo iniciado! Siga a sequência apresentada.');
