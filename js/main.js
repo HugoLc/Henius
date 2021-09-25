@@ -2,14 +2,15 @@ import Jogo from '../js/jogo.js';
 import InfoCard from '../js/info-card.js'
 
 const infoParagrafo = `
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-  Donec consequat, purus at consequat dapibus, ipsum lectus
-  pellentesque arcu, ut ultricies nibh metus vitae nisi. Donec facilisi
-  s ullamcorper leo a iaculis. Duis rhoncus euismod arcu, elementum
-  ultricies libero consequat ultricies. Nam sit amet mi convallis, faci
-  lisis felis ut, pharetra massa. Cras non lacus et lorem aliquet fau
-  cibus et eu ipsum. Nunc ultrices massa ut felis cursus, et scelerisque augue laoreet. I
-  nteger el
+  Projeto realizado com o objetivo de praticar orientação a objetos
+  em javascript. Durante o processo de criação, aprendi diversos conceitos
+  como construtor de classes, métodos e variáveis privadas, importação e exportação
+  de módulos em javascript, métodos síncronos e assíncronos.
+  <br><br>
+  Trata-se de um jogo baseado no jogo de memória Genius, onde é exibida uma
+  sequência aleatória que deve ser seguida, aumentando a cada rodada. Ao final
+  será mostrada a pontuação sendo o número de rodadas alcançadas. Futuramente será
+  adicionado ao projeto um placar, utilizando conceitos de Backend.
 `;
 var infoCard = new InfoCard(infoParagrafo);
 
