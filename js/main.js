@@ -11,7 +11,7 @@ const infoParagrafo = `
   cibus et eu ipsum. Nunc ultrices massa ut felis cursus, et scelerisque augue laoreet. I
   nteger el
 `;
-const infoCard = new InfoCard(infoParagrafo);
+var infoCard = new InfoCard(infoParagrafo);
 
 const box = document.querySelector('#id-box')
 const collection = document.getElementsByClassName('botao-cor'); //gera uma coleção de elementos
