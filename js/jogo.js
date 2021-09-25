@@ -1,5 +1,4 @@
-//import sleeper from '/js/misc.js'; // funciona no srv local
-import sleeper from '/genius/js/misc.js'; // funciona no gh pages
+import sleeper from '../js/misc.js'; 
 
 export default class Jogo{
   #botoes; // array de elementos botão

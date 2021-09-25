@@ -1,5 +1,17 @@
-import Jogo from '/genius/js/jogo.js'; // funciona no gh pages
-//import Jogo from '/js/jogo.js'; // funciona no srv local
+import Jogo from '../js/jogo.js'; 
+import InfoCard from '../js/info-card.js'
+
+const infoParagrafo = `
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+  Donec consequat, purus at consequat dapibus, ipsum lectus
+  pellentesque arcu, ut ultricies nibh metus vitae nisi. Donec facilisi
+  s ullamcorper leo a iaculis. Duis rhoncus euismod arcu, elementum
+  ultricies libero consequat ultricies. Nam sit amet mi convallis, faci
+  lisis felis ut, pharetra massa. Cras non lacus et lorem aliquet fau
+  cibus et eu ipsum. Nunc ultrices massa ut felis cursus, et scelerisque augue laoreet. I
+  nteger el
+`;
+const infoCard = new InfoCard(infoParagrafo);
 
 const box = document.querySelector('#id-box')
 const collection = document.getElementsByClassName('botao-cor'); //gera uma coleção de elementos
@@ -16,6 +28,7 @@ let rodando = false; // variavel para bloquear um segundo acionamento do jogo
 const jogo = new Jogo(botoes, box);
 
 document.addEventListener('click', () => {
+  infoCard.excluirInfoCard();
   if (!rodando) {
     console.log('jogo iniciado');
     alert('Jogo iniciado! Siga a sequência apresentada.');
