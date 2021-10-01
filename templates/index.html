@@ -9,9 +9,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/info-card.css">
-    <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/reset.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/info-card.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/master.css')}}">
 
 
   </head>
@@ -25,22 +25,22 @@
       <div id='id-box' class="box">
         <div id="bt-01" class="red botao-cor">
           <audio id="som1">
-            <source src="sounds/som1.wav" type ="audio/wav">
+            <source src="{{url_for('static', filename='sounds/som1.wav')}}" type ="audio/wav">
           </audio>
         </div>
         <div id="bt-02" class="cyan botao-cor">
           <audio id="som2" >
-            <source src="sounds/som2.wav" type ="audio/wav">
+            <source src="{{url_for('static', filename='sounds/som2.wav')}}" type ="audio/wav">
           </audio>
         </div>
         <div id="bt-03" class="lime botao-cor">
           <audio id="som3" >
-            <source src="sounds/som3.wav" type ="audio/wav">
+            <source src="{{url_for('static', filename='sounds/som3.wav')}}" type ="audio/wav">
           </audio>
         </div>
         <div id="bt-04" class="yellow botao-cor">
           <audio id="som4" >
-            <source src="sounds/som4.wav" type ="audio/wav">
+            <source src="{{url_for('static', filename='sounds/som4.wav')}}" type ="audio/wav">
           </audio>
         </div>
       </div>
@@ -48,6 +48,6 @@
 
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/18d6c9162d.js" crossorigin="anonymous"></script>
-    <script type="module" src="./js/main.js" charset="utf-8"></script>
+    <script type="module" src="{{url_for('static', filename='js/main.js')}}" charset="utf-8"></script>
   </body>
 </html>
