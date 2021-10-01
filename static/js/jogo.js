@@ -186,7 +186,22 @@ export default class Jogo{
 
   //FUNÇÃO PARA PEGAR A CLASSIFICAÇÃO (EM BREVE)
   #getClassificacao(){
+    const xhr = new XMLHttpRequest();
+    let infoJson;
 
+    xhr.responseType = 'json';
+    xhr.onreadystatechange = () => {
+
+      if(xhr.readyState == 4){
+        infoJson = xhr.response;
+        //infoJson = JSON.parse(infoJson);
+        console.log(infoJson);
+      }
+    };
+
+    xhr.open('GET', '../rank');
+
+    xhr.send();
   }
 
   //FUNÇÃO PARA POSTAR A CLASSIFICAÇÃO (EM BREVE)
@@ -197,6 +212,7 @@ export default class Jogo{
   // FUNÇÃO CONTROLAR A FINALIZAÇÃO DO JOGO
   #finalizarJogo(){
     //registrar classificação
-    alert(`Fim de jogo! \nSua pontuação foi ${this.#sequencia.length} pontos.`);
+    //alert(`Fim de jogo! \nSua pontuação foi ${this.#sequencia.length} pontos.`);
+    this.#getClassificacao();
   }
 }

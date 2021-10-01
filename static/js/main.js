@@ -1,7 +1,7 @@
 import Jogo from '../js/jogo.js'; 
 import InfoCard from '../js/info-card.js'
 
-console.log("funcionando")
+
 
 const infoParagrafo = `
   Projeto realizado com o objetivo de praticar orientação a objetos
